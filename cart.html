@@ -38,7 +38,20 @@
                 const price = parseFloat(item.price.replace('$', '')) || 0;
                 total += price;
                 li.innerHTML = \`\${item.name} - \${item.price} 
-                    <button onclick="removeItem(\${index})">Remove</button>\`;
+                   <button onclick="clearCart()">Clear Cart</button>
+<br>
+<button onclick="proceedToCheckout()">Proceed to Checkout</button>
+
+<script>
+function proceedToCheckout() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    window.location.href = "checkout.html";
+}
+</script>;
                 cartList.appendChild(li);
             });
 
